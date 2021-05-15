@@ -2,10 +2,7 @@ package com.sebastian.springboot.controller;
 
 import com.sebastian.springboot.domain.User;
 import com.sebastian.springboot.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +21,7 @@ public class UserController {
     @ApiResponses ({
         @ApiResponse(code = 200, message = "User created correctly"),
     })
-    public User createUser(@PathVariable("birth_date") LocalDate birthDate){
+    public User createUser(@ApiParam(value = "The id of the user", required = true) @PathVariable("birth_date") LocalDate birthDate){
         return userService.createUser(birthDate);
     }
 
