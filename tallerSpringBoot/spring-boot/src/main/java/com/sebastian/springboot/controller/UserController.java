@@ -4,6 +4,8 @@ import com.sebastian.springboot.domain.User;
 import com.sebastian.springboot.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,30 +21,49 @@ public class UserController {
 
     @PostMapping(path = "/api/v1/users")
     @ApiOperation("Create a new instances of User type into DB.")
+    @ApiResponses ({
+        @ApiResponse(code = 200, message = "User created correctly"),
+    })
     public User createUser(@PathVariable("birth_date") LocalDate birthDate){
         return userService.createUser(birthDate);
     }
 
     @GetMapping(path = "/api/v1/users/{id}")
-    @ApiOperation("Find a user by an given id")
+    @ApiOperation("Find a user by an given id.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "User not found.")
+    })
     public Optional<User> findById(Integer id) {
         return userService.findById(id);
     }
 
     @GetMapping(path = "/api/v1/users")
     @ApiOperation("Find all users")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Users not found.")
+    })
     public List<User> findAll(){
         return userService.findAll();
     }
 
     @PutMapping (path = "/api/v1/users")
     @ApiOperation("Upadte a user")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "User updated correctly"),
+            @ApiResponse(code = 404, message = "Users not found.")
+    })
     public User updateUser(Integer id, LocalDate birthDate){
         return userService.updateUser(id, birthDate);
     }
 
     @DeleteMapping(path = "/api/v1/users/{id}")
     @ApiOperation("Delete an user by a given id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Users not found.")
+    })
     public void deleteUserById(Integer id){
         userService.deleteUserById(id);
     }
