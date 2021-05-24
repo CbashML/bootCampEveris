@@ -1,0 +1,54 @@
+Send by German Martin Gomez:
+
+venga os pongo yo un ejercicio... 
+Crear una API que sirva:
+
+
+	
+Un endpoint que necesite un determinado valor el que querais y responda en xml de dos string y que se pueda llamar desde postman
+
+
+
+	
+Un endpoint que consuma ese servicio xml y lo transforme en json y concatene esos 2 string devolvienod un unico objeto string
+	para mejorar pensar como implementar peticiones asincronas con estos dos endpoint o añadiendo nuevos si fuera necesario 
+
+Todo esto tenienedo en cuenta la creacion del diseño en el desing center, la instanciacion en el api manager y subiendolo en el cloud y sin olvidar las buenas practicas de tener un properties y los flujos separados
+
+Send by Rafael Gonzalez Rodriguez
+
+https://swapi.dev/
+
+Ejercicio:
+      - Devolver listado de todos los personajes
+      - Devolver información de solo un personaje si se desea
+      - Manejo de errores
+      - La respuesta este filtrada: 10 campos máximo y uno de ellos debe ser numero total de películas del personaje.
+	  
+	  - Posibilidad de añadir personajes. Obviamente no vais a crear un personaje de verdad estará mockeado en la implementacion pero que al menos devuelva un OK la implementacion y que exista esa posibilidad en la especificación del API.
+	  
+	  //payload map  {
+//	"name": $.name,
+//    "height": $.height,
+//    "mass": $.mass,
+//    "hair_color": $.'hair_color',
+//    "skin_color": $.'skin_color',
+//    "eye_color": $.'eye_color',
+//    "birth_year": $.'birth_year',
+//    "gender": $.gender,
+//    "homeworld": $.homeworld
+//}
+
+
+WORKSHOP:
+
+https://openweathermap.org/current
+Endpoint: api.openweathermap.org/data/2.5/weather?q=madrid&appid=9849b0079ba1163c58cb09201f11c29d
+
+api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
+
+1) API SPEC
+Requisitos:
+GET ALL
+GET 2 QUERY --> CHOICE
+Query: Longitud, latitud

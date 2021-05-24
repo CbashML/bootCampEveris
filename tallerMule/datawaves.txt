@@ -1,0 +1,23 @@
+payload[0].price - mostraría el precio de la primera posición del payload
+payload.*price - recorre todos los objetos del payload y saca el precio
+[payload.*price, payload.*origin] - devuelve en arrais diferentes los campos indicados
+
+payload map {  - devuelve un array. $$ guarda la posición y $ guarda el objeto
+	flight: $$,
+	destination: $.destination 
+}
+
+payload map (object, index) -> {  - con object referenciamos al objeto y index a la posición del array
+	(index):object,
+}
+var p = 150 - definir variable antes de los "..."
+
+fun sumPrice(origin: String) =   - Setea un valor según la condición que le digamos. (Declarar antes de los "...")
+	if (origin contains('CLE'))
+		150
+	else
+		500
+
+sumPrice(object.origin) - llamamos a la función
+plane: upper(object.plane.'type') - lo pone en mayúscula
+precio: lookup('consumoapisFlow1'.origin: object.origin) - llamaría a otro flujo pasándole ese dato
